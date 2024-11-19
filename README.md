@@ -7,3 +7,5 @@
 
 方案：
 <https://github.com/vercel/next.js/discussions/56002#discussioncomment-7111106>
+
+<https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs>
