@@ -12,9 +12,12 @@ type Message = {
   content: string
 }
 
+const supabaseUrl = process.env.SUPABASE_URL!
+const supabaseKey = process.env.SUPABASE_KEY!
 const channelName = '__rts_messages'
 
 export default function RealTimeSharing() {
+  console.log('process.env', supabaseUrl, supabaseKey)
   const [inputText, setInputText] = useState('')
   const [supabase, setSupabase] = useState<SupabaseClient>()
   const [messages, setMessages] = useLocalStorageState<Message[]>('__rts_messages', { defaultValue: [] })
@@ -73,7 +76,7 @@ export default function RealTimeSharing() {
   }
 
   useEffect(() => {
-    const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_KEY!)
+    const supabase = createClient(supabaseUrl, supabaseKey)
     setSupabase(supabase)
     const channel = supabase.channel(channelName)
 
